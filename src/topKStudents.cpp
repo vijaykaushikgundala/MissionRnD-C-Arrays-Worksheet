@@ -19,8 +19,40 @@ NOTES:
 struct student {
 	char *name;
 	int score;
-};
+}b;
 
-struct student ** topKStudents(struct student *students, int len, int K) {
-	return NULL;
+struct student ** topKStudents(struct student *students, int len, int K) 
+{
+	struct student **newarray;
+	newarray = (struct student**)malloc(2 * sizeof(struct student));
+	int i, j;
+	if (len < 0)
+	{
+		return NULL;
+	}
+	if (students == NULL)
+	{
+		return NULL;
+	}
+	if (K < 1)
+	{
+		return NULL;
+	}
+	for (i = 0; i < len; i++)
+	{
+		for (j = 0; j < len; j++)
+		{
+			if (students[i].score > students[j].score)
+			{
+				b = students[i];
+				students[i] = students[j];
+				students[j] = b;
+			}
+		}
+	}
+	for (i = 0; i < K; i++)
+	{
+		newarray[i] = &students[i];
+	}
+	return newarray;
 }
